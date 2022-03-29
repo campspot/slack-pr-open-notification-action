@@ -23,8 +23,9 @@ var mentions = sendHereMention + sendUserIDMentions + sendGroupIDMentions + "\n"
 var prFromFork = process.env.IS_PR_FROM_FORK;
 var compareBranchText = prFromFork === "true" ? compareBranchOwner + ":" + compareBranchName : compareBranchName;
 var baseBranchText = prFromFork === "true" ? baseBranchOwner + ":" + baseBranchName : baseBranchName;
-var makePretty = process.env.MAKE_PRETTY.toLowerCase() === "true"; //Priority is pretty > compact > normal
+var makePretty = process.env.MAKE_PRETTY.toLowerCase() === "true"; //Priority is pretty > compact > github > normal
 var makeCompact = process.env.MAKE_COMPACT.toLowerCase() === "true";
+var makeGithub = process.env.MAKE_GITHUB.toLowerCase() === "true";
 if (makePretty) {
     var message = {
         attachments: [
@@ -106,6 +107,20 @@ else if (makeCompact) {
         ]
     };
     axios_1["default"].post(url, message);
+}
+else if (makeGithub) {
+    var message = {
+        blocks: [
+            {
+                type: "section",
+                block_id: "message",
+                text: {
+                    type: "mrkdwn",
+                    text: "<|".concat(authorName, " wants to merge into `").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
+                }
+            }
+        ]
+    };
 }
 else {
     var message = {

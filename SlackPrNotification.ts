@@ -26,8 +26,9 @@ const prFromFork: string = process.env.IS_PR_FROM_FORK;
 const compareBranchText: string = prFromFork === "true" ? compareBranchOwner + ":" + compareBranchName : compareBranchName;
 const baseBranchText: string = prFromFork === "true" ? baseBranchOwner + ":" + baseBranchName : baseBranchName;
 
-const makePretty: boolean = process.env.MAKE_PRETTY.toLowerCase() === "true"; //Priority is pretty > compact > normal
+const makePretty: boolean = process.env.MAKE_PRETTY.toLowerCase() === "true"; //Priority is pretty > compact > github > normal
 const makeCompact: boolean = process.env.MAKE_COMPACT.toLowerCase() === "true";
+const makeGithub: boolean = process.env.MAKE_GITHUB.toLowerCase() === "true";
 
 if (makePretty) {
     const message: Object = {
@@ -109,6 +110,19 @@ if (makePretty) {
         ]
     }
     axios.post(url, message);
+} else if (makeGithub) {
+    const message: Object = {
+        blocks: [
+            {
+                type: "section",
+                block_id: "message",
+                text: {
+                    type: "mrkdwn",
+                    text: `<|${authorName} wants to merge into \`${baseBranchText}\` from \`${compareBranchText}\`>`
+                }
+            }
+        ]
+    }
 } else {
     const message: Object = {
         blocks: [

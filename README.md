@@ -33,10 +33,11 @@ jobs:
         IS_SEND_HERE_MENTION : true
         MAKE_PRETTY : false
         MAKE_COMPACT : false
+        MAKE_GITHUB: false
         IS_PR_FROM_FORK: false
         SEND_USER_ID_MENTIONS : ABCDE12345,AAABBBCCCC
         SEND_GROUP_ID_MENTIONS : GROUPIDDDD,GGGGROUPID
-      uses: jun3453/slack-pr-open-notification-action@v1.3.0
+      uses: campspot/slack-pr-open-notification-action@v1.0.0
 ```
 
 ### Arguments
@@ -61,6 +62,10 @@ Pretty prints the information. Adds a "See Pull Request" button.
 Smaller visual footprint.
 
 ![make_compact](https://raw.githubusercontent.com/jun3453/slack-pr-open-notification-action/images/make_compact.png)
+
+#### MAKE_GITHUB
+**boolean (DEFAULT: false)**
+Short like Github's PR message, "X wants to merge to Y from Z"
 
 #### IS_PR_FROM_FORK
 **boolean (DEFAULT: false)**  
