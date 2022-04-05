@@ -117,7 +117,7 @@ else if (makeGithub) {
                 block_id: "message",
                 text: {
                     type: "mrkdwn",
-                    text: "<|".concat(authorName, " wants to merge into `").concat(repository, "`/`").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
+                    text: "<".concat(prUrl, "|").concat(authorName, " wants to merge into `").concat(repository, "`/`").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
                 }
             }
         ]
