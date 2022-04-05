@@ -21,9 +21,10 @@ jobs:
         PULL_REQUEST_COMPARE_BRANCH_NAME : ${{ github.event.pull_request.head.ref }}
         PULL_REQUEST_BASE_BRANCH_OWNER: ${{ github.event.pull_request.base.repo.owner.login }}
         PULL_REQUEST_BASE_BRANCH_NAME : ${{ github.event.pull_request.base.ref }}
+        REPOSITORY: ${{ github.repository }}
         IS_SEND_HERE_MENTION : true
         MAKE_PRETTY : false
         MAKE_COMPACT : false
+        MAKE_DENSE: true
         IS_PR_FROM_FORK: false
-        REPOSITORY: repo
-      uses: campspot/slack-pr-open-notification-action@v1.0.0.0
+      uses: campspot/slack-pr-open-notification-action@v1.4.0

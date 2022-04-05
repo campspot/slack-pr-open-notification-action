@@ -24,9 +24,9 @@ var mentions = sendHereMention + sendUserIDMentions + sendGroupIDMentions + "\n"
 var prFromFork = process.env.IS_PR_FROM_FORK;
 var compareBranchText = prFromFork === "true" ? compareBranchOwner + ":" + compareBranchName : compareBranchName;
 var baseBranchText = prFromFork === "true" ? baseBranchOwner + ":" + baseBranchName : baseBranchName;
-var makePretty = process.env.MAKE_PRETTY.toLowerCase() === "true"; //Priority is pretty > compact > github > normal
+var makePretty = process.env.MAKE_PRETTY.toLowerCase() === "true"; //Priority is pretty > compact > dense > normal
 var makeCompact = process.env.MAKE_COMPACT.toLowerCase() === "true";
-var makeGithub = process.env.MAKE_GITHUB.toLowerCase() === "true";
+var makeDense = process.env.MAKE_DENSE.toLowerCase() === "true";
 if (makePretty) {
     var message = {
         attachments: [
@@ -109,7 +109,7 @@ else if (makeCompact) {
     };
     axios_1["default"].post(url, message);
 }
-else if (makeGithub) {
+else if (makeDense) {
     var message = {
         blocks: [
             {
@@ -117,7 +117,7 @@ else if (makeGithub) {
                 block_id: "message",
                 text: {
                     type: "mrkdwn",
-                    text: "<".concat(prUrl, "|").concat(authorName, " wants to merge into `").concat(repository, "/").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
+                    text: "<".concat(prUrl, "|").concat(authorName, ": `").concat(repository, "/").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
                 }
             }
         ]
