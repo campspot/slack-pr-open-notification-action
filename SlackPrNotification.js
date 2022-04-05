@@ -122,6 +122,7 @@ else if (makeGithub) {
             }
         ]
     };
+    axios_1["default"].post(url, message);
 }
 else {
     var message = {

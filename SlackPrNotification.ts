@@ -123,7 +123,8 @@ if (makePretty) {
                 }
             }
         ]
-    }
+    };
+    axios.post(url, message);
 } else {
     const message: Object = {
         blocks: [
