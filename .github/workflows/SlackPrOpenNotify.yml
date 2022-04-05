@@ -25,4 +25,5 @@ jobs:
         MAKE_PRETTY : false
         MAKE_COMPACT : false
         IS_PR_FROM_FORK: false
-      uses: campspot/slack-pr-open-notification-action@v1.0.0
+        REPOSITORY: repo
+      uses: campspot/slack-pr-open-notification-action@v1.0.0.0

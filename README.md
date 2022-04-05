@@ -37,7 +37,8 @@ jobs:
         IS_PR_FROM_FORK: false
         SEND_USER_ID_MENTIONS : ABCDE12345,AAABBBCCCC
         SEND_GROUP_ID_MENTIONS : GROUPIDDDD,GGGGROUPID
-      uses: campspot/slack-pr-open-notification-action@v1.0.0
+        REPOSITORY: repo
+      uses: campspot/slack-pr-open-notification-action@v1.0.0.0
 ```
 
 ### Arguments

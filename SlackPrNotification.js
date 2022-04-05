@@ -12,6 +12,7 @@ var compareBranchOwner = process.env.PULL_REQUEST_COMPARE_BRANCH_OWNER;
 var compareBranchName = process.env.PULL_REQUEST_COMPARE_BRANCH_NAME;
 var baseBranchOwner = process.env.PULL_REQUEST_BASE_BRANCH_OWNER;
 var baseBranchName = process.env.PULL_REQUEST_BASE_BRANCH_NAME;
+var repository = process.env.REPOSITORY;
 var sendHereMention = process.env.IS_SEND_HERE_MENTION.toLowerCase() === "true" ? "<!here>" : "";
 var sendUserIDMentions = process.env.SEND_USER_ID_MENTIONS ? process.env.SEND_USER_ID_MENTIONS.split(",").map(function (id) {
     return "<@" + id + ">";
@@ -116,7 +117,7 @@ else if (makeGithub) {
                 block_id: "message",
                 text: {
                     type: "mrkdwn",
-                    text: "<|".concat(authorName, " wants to merge into `").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
+                    text: "<|".concat(authorName, " wants to merge into `").concat(repository, "`/`").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
                 }
             }
         ]

@@ -11,6 +11,7 @@ const compareBranchOwner: string = process.env.PULL_REQUEST_COMPARE_BRANCH_OWNER
 const compareBranchName: string = process.env.PULL_REQUEST_COMPARE_BRANCH_NAME;
 const baseBranchOwner: string = process.env.PULL_REQUEST_BASE_BRANCH_OWNER;
 const baseBranchName: string = process.env.PULL_REQUEST_BASE_BRANCH_NAME;
+const repository: string = process.env.REPOSITORY;
 
 const sendHereMention: string = process.env.IS_SEND_HERE_MENTION.toLowerCase() === "true" ? "<!here>" : "";
 const sendUserIDMentions: string = process.env.SEND_USER_ID_MENTIONS ? process.env.SEND_USER_ID_MENTIONS.split(",").map(id => {
@@ -118,7 +119,7 @@ if (makePretty) {
                 block_id: "message",
                 text: {
                     type: "mrkdwn",
-                    text: `<|${authorName} wants to merge into \`${baseBranchText}\` from \`${compareBranchText}\`>`
+                    text: `<|${authorName} wants to merge into \`${repository}\`/\`${baseBranchText}\` from \`${compareBranchText}\`>`
                 }
             }
         ]
