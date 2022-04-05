@@ -119,7 +119,7 @@ if (makePretty) {
                 block_id: "message",
                 text: {
                     type: "mrkdwn",
-                    text: `<|${authorName} wants to merge into \`${repository}\`/\`${baseBranchText}\` from \`${compareBranchText}\`>`
+                    text: `<|${authorName} wants to merge into \`${repository}/${baseBranchText}\` from \`${compareBranchText}\`>`
                 }
             }
         ]
