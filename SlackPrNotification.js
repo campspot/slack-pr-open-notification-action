@@ -110,7 +110,7 @@ else if (makeCompact) {
     axios_1["default"].post(url, message);
 }
 else if (makeDense) {
-    var repoWithoutPrefix = repository; // TODO get rid of campspot/ prefix
+    var repoWithoutPrefix = repository.replace(/.*\//, '');
     var message = {
         blocks: [
             {
