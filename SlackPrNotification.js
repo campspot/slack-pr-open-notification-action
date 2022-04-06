@@ -110,6 +110,7 @@ else if (makeCompact) {
     axios_1["default"].post(url, message);
 }
 else if (makeDense) {
+    var repoWithoutPrefix = repository; // TODO get rid of campspot/ prefix
     var message = {
         blocks: [
             {
@@ -117,7 +118,7 @@ else if (makeDense) {
                 block_id: "message",
                 text: {
                     type: "mrkdwn",
-                    text: "<".concat(prUrl, "|").concat(authorName, ": `").concat(repository, "/").concat(baseBranchText, "` from `").concat(compareBranchText, "`>")
+                    text: "<".concat(prUrl, "|").concat(authorName, ": `").concat(compareBranchText, "` \u2192 `").concat(repoWithoutPrefix, "/").concat(baseBranchText, "`>")
                 }
             }
         ]
