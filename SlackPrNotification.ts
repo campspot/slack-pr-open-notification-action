@@ -90,7 +90,7 @@ if (makePretty) {
                 block_id: "commit_title",
                 text: {
                     type: "mrkdwn",
-                    text: "*<" + prUrl + "|" + prTitle + ">* #" + prNum + " from *" + compareBranchText + "* to *" + baseBranchText + "*." + mentions
+                    text: "*<" + prUrl + "|" + prTitle + ">* #" + prNum + mentions
                 }
             },
             {
